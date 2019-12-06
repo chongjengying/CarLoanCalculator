@@ -1,93 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/TitleCarLoanCalculator"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Car Loan Calculator" />
+        android:text="@string/viewcalculaotr"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCarPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextCarPrice"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Car Price" />
+        android:hint="@string/car_price"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDownPayment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/editTextDownPayment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Down Payment" />
+        android:hint="@string/downpayment"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/editTextLoanPeriod"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCarPrice" />
 
     <EditText
         android:id="@+id/editTextLoanPeriod"
-        android:layout_width="match_parent"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Loan Period (Year)" />
+        android:hint="@string/loan_period"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/editTextInterestRate"
+        app:layout_constraintStart_toStartOf="@+id/editTextDownPayment"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDownPayment" />
+
 
     <EditText
         android:id="@+id/editTextInterestRate"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="@string/interest_rate"
         android:inputType="textPersonName|numberDecimal"
-        android:text="Interest Rate (%)" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewLoan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLoanPeriod" />
 
     <TextView
-        android:id="@+id/textViewCarLoan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Car Loan" />
+        android:id="@+id/textViewLoan"
+        android:layout_width="114dp"
+        android:layout_height="32dp"
+        android:text="@string/loan"
+        app:layout_constraintBottom_toTopOf="@+id/textViewInterest"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewInterest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Interest" />
+        android:layout_width="261dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="340dp"
+        android:text="@string/interest"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewMonthlyRepayment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Monthly Repayment"/>
+        android:layout_width="261dp"
+        android:layout_height="45dp"
+        android:text="@string/montly_repayment"
+        app:layout_constraintEnd_toStartOf="@+id/textViewInterest"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewInterest" />
+
+    <Button
+        android:id="@+id/buttonCalculate"
+        android:layout_width="124dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="244dp"
+        android:text="@string/calculate"
+        app:layout_constraintEnd_toStartOf="@+id/buttonReset"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMonthlyRepayment" />
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="124dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:onClick="resetInput"
+        android:text="RESET"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCalculate"
+        app:layout_constraintVertical_bias="1.0" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonCalculate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="CALCULATE" />
-
-        <Button
-            android:id="@+id/buttonReset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="resetInput"
-            android:layout_weight="1"
-            android:text="RESET" />
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

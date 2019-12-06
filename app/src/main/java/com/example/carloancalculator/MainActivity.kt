@@ -27,21 +27,26 @@ class MainActivity : AppCompatActivity() {
         val interest_rate=editTextInterestRate.text.toString().toFloat()
 
 
-       val loan=car_price-down_payment
-        val interest=loan*4.5*5
-        val mrepayment=(loan +interest)/5/12
+        val loan=car_price-down_payment
+        val interest = ((loan*interest_rate/100)/(loan_period*12))
+        val mrepayment=( interest) + (loan/(loan_period*12))
 
-        textViewCarLoan.text =getString(R.string.loan)+":${loan}"
+        textViewLoan.text = "Loan :" + "${loan}"
 
-        textViewInterest.text=getString (R.string.interest)+":$(interest)"
-
+        textViewInterest.text = " Interest:" + "${interest}"
+        textViewMonthlyRepayment.text = "Monthly Repayment:"+ "${mrepayment}"
 
     }
 
     fun resetInput(view: View)
-
     {
-
+        editTextCarPrice.setText(null)
+        editTextDownPayment.setText(null)
+        editTextInterestRate.setText(null)
+        editTextLoanPeriod.setText(null)
+        textViewLoan.setText("Loan :")
+        textViewMonthlyRepayment.setText("Month Repayment :")
+        textViewInterest.setText("Inteest: ")
 
     }
 
